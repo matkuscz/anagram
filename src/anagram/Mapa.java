@@ -6,6 +6,7 @@ package anagram;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  *
@@ -55,7 +56,12 @@ public class Mapa
     
     public void vypisMapu()
     {
-        System.out.print(mapa + "\n");
+        //System.out.print(mapa + "\n");
+        
+        Set keys = mapa.entrySet();
+        for (Object key : keys) {
+            System.out.println("Prvek: "+ mapa.get(key));
+        }
     }
         
     public static Boolean porovnejMapy(Mapa mapa1, Mapa mapa2)
