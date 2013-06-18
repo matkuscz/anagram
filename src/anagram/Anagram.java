@@ -34,9 +34,9 @@ public class Anagram
         mapicka.pridejVyskyt(new Character('b'));
         
         mapicka.vypisMapu();
-        mameAnagram = anagram.zjistiAnagram("cadac", "daacc");
+        mameAnagram = Anagram.zjistiAnagram("cadac", "daacc");
         
-        
+        System.out.println(mameAnagram);
         
     }
     

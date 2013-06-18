@@ -58,7 +58,7 @@ public class Mapa
         System.out.print(mapa + "\n");
     }
         
-    public Boolean porovnejMapy(HashMap mapa1, HashMap mapa2)
+    public static Boolean porovnejMapy(Mapa mapa1, Mapa mapa2)
     {
         Boolean stejne = false;
         
