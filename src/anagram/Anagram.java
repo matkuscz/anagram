@@ -10,9 +10,11 @@ import java.util.*;
  *
  * @author matejka
  */
-public class Anagram {
+public class Anagram
+{
 
-    public Anagram() {
+    public Anagram()
+    {
         Mapa mapicka = new Mapa();
 
         Boolean mameAnagram = false;
@@ -29,7 +31,7 @@ public class Anagram {
         mapicka.pridejVyskyt(new Character('b'));
 
         mapicka.vypisMapu();
-        mameAnagram = Anagram.zjistiAnagram("cadac", "daacc");
+        mameAnagram = Anagram.zjistiAnagram("cadac", "daaacc");
 
         System.out.println(mameAnagram);
     }
@@ -37,14 +39,16 @@ public class Anagram {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
 
         Anagram anagram = new Anagram();
 
 
     }
 
-    public static Boolean zjistiAnagram(String prvniVeta, String druhaVeta) {
+    public static Boolean zjistiAnagram(String prvniVeta, String druhaVeta)
+    {
         Boolean jeAnagram = false;
 
         Character pismeno;
@@ -52,7 +56,8 @@ public class Anagram {
 
         Mapa mapkaPrvnihoSlova = new Mapa();
 
-        for (int i = 0; i < prvniVeta.length(); i++) {
+        for (int i = 0; i < prvniVeta.length(); i++)
+        {
             pismeno = prvniVeta.charAt(i);
             mapkaPrvnihoSlova.pridejVyskyt(pismeno);
         }
@@ -61,14 +66,19 @@ public class Anagram {
 
         Mapa mapkaDruhehoSlova = new Mapa();
 
-        for (int j = 0; j < druhaVeta.length(); j++) {
+        for (int j = 0; j < druhaVeta.length(); j++)
+        {
             pismeno2 = druhaVeta.charAt(j);
             mapkaDruhehoSlova.pridejVyskyt(pismeno2);
         }
 
         mapkaDruhehoSlova.vypisMapu();
 
-
-        return Mapa.porovnejMapy(mapkaPrvnihoSlova, mapkaDruhehoSlova);
+        int vysledek = mapkaDruhehoSlova.compareTo(mapkaPrvnihoSlova);
+        if (vysledek < 0)
+        {
+            return false;
+        }
+        return true;
     }
 }

@@ -5,19 +5,20 @@
 package anagram;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 /**
  *
  * @author matejka
  */
-public class Mapa
+public class Mapa implements Comparable<Mapa>
 {
-    private Map mapa = new HashMap();
+
+    private HashMap<Character, Integer> mapa = new HashMap<>();
+
     public Mapa()
     {
-    
+
         mapa.put('a', 0);
         mapa.put('b', 0);
         mapa.put('c', 0);
@@ -44,36 +45,45 @@ public class Mapa
         mapa.put('x', 0);
         mapa.put('y', 0);
         mapa.put('z', 0);
-     }   
-    
+    }
+
     public void pridejVyskyt(Character klic)
     {
         Object puvodniHodnota;
         puvodniHodnota = mapa.get(klic);
-        mapa.put(klic, (Integer)puvodniHodnota+1);
-        
+        mapa.put(klic, (Integer) puvodniHodnota + 1);
+
     }
-    
+
     public void vypisMapu()
     {
         //System.out.print(mapa + "\n");
-        
-        Set keys = mapa.entrySet();
-        for (Object key : keys) {
-            System.out.println("Prvek: "+ mapa.get(key));
-        }
-    }
-        
-    public static Boolean porovnejMapy(Mapa mapa1, Mapa mapa2)
-    {
-        Boolean stejne = false;
-        
-        if(mapa1.equals(mapa2))
+
+        Set keys = mapa.keySet();
+        for (Object key : keys)
         {
-            stejne = true;
+            System.out.print("Prvek[" + key + "]: " + mapa.get(key) + ", ");
         }
-        
-        return stejne;
+        System.out.println("");
     }
-    
+
+
+    @Override
+    public int compareTo(Mapa o)
+    {
+        Set keys = mapa.keySet();
+        for (Object key : keys)
+        {
+            if (mapa.get(key) != o.getValForKey(key))
+            {
+                return -1;
+            }
+        }
+      return 1;
+    }
+
+    private Integer getValForKey(Object key)
+    {
+        return mapa.get(key);
+    }
 }
